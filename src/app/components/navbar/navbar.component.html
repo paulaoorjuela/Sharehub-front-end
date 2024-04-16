@@ -1,0 +1,72 @@
+<nav class="navbar navbar-bg p-3 sticky-top">
+    <div class="container-fluid">
+        <div>
+            <a routerLink="/" class="d-flex align-content-center text-decoration-none">
+                <i class="fa-regular fa-comments me-3 text-color fs-2"></i>
+                <span class="navbar-brand mb-0 h1 fs-3 text-color LogoShareHubFont">ShareHub</span>
+            </a>
+        </div>
+        <div>
+            <ul class="nav justify-content-end TextoShareHubFont fw-semibold">
+                <li class="nav-item mt-2">
+                    <input type="text" class="input-busqueda rounded-pill w-100 border-0 py-1 px-4"
+                        placeholder="Buscar" (keydown.enter)="buscarUsuarios($event)" (click)="redireccion()">
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-color hidden-nav-item" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Grupos</a>
+                    <ul class="dropdown-menu dropdown-bg">
+                        <li><a class="dropdown-item text-color" routerLink="/registro-grupos">Crear Grupo</a></li>
+                        <li><a class="dropdown-item text-color" routerLink="/mis-grupos">Mis Grupos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-color hidden-nav-item" [routerLink]="['/chat', idUsuarioPayload]"  >Chat</a>
+                </li>
+                <li class="nav-item img-hidden-sm">
+                    <a class="nav-link text-color" [href]="URLProyecto+'/mi-perfil/'+idUsuarioPayload">
+                        <img [src]="imguser" alt="" class="img-perfil-navbar rounded-circle">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link text-color hidden-nav-item" (click)="clearSessionStorage()">Log Out</button>
+                </li>
+
+                <!-- dropdown hidden -->
+                <li class="nav-item dropdown dropdown-hiden-menu">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img [src]="imguser" alt="" class="img-perfil-navbar rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-bg">
+                        <li>
+                            <button class="dropdown-item text-color" (click)="clearSessionStorage()">Log Out</button>
+                        </li>
+                        <li><a class="dropdown-item text-color" [href]="URLProyecto+'/mi-perfil/'+idUsuarioPayload">Perfil</a></li>
+                        <li><a class="dropdown-item text-color" href="#">Notificaciones</a></li>
+                        <li><a class="dropdown-item text-color" href="#">Explorar</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-item text-color dropdown-toggle dropstart" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Grupos</a>
+                            <ul class="dropdown-menu dropdown-bg dropdown-submenu">
+                                <li><a class="dropdown-item text-color" routerLink="/registro-grupos">Crear Grupo</a></li>
+                                <li><a class="dropdown-item text-color" routerLink="/mis-grupos">Mis Grupos</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item text-color" [routerLink]="['/chat', idUsuarioPayload]" >Chat</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- <ul class="list-group">
+    @if (usuariosEncontrados.length > 0) {
+        @for (usuario of usuariosEncontrados; track usuario._id) {}
+        <li  class="list-group-item">
+            {{ usuario.nombre }}
+        </li>
+    }
+</ul> -->

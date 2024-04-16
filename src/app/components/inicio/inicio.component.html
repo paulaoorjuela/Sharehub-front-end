@@ -1,0 +1,14 @@
+<main class="container">
+@for (item of publicacionesDataUsuario; track item) {
+<app-hijo-inicio
+    [rutaImagenUsuario]="item.imgUsuario"
+    [rutaNombre]="item.nombreUsuario"
+    [rutaImagen]="item.imagenPublicacion"
+    [rutaComentario]="item.textPublicacion"
+    [rutaId]="item._id"
+    [rutaTexto]="item.comentario"
+    [idUsuario]="item.idUsuario"
+></app-hijo-inicio>
+}
+
+</main>

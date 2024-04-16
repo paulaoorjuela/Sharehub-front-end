@@ -1,0 +1,74 @@
+<main class="login">
+    <div class="container ">
+        <div class="d-flex justify-content-between flex-lg-row flex-column text-center">
+            <div class="d-flex mt-5 ">
+                <div class="me-5 d-grid align-items-center"><i class="fa-regular fa-comments fa-3x"></i></div>
+                <h1 type="submit" class="nombre LogoShareHubFont" [routerLink]="['/']">ShareHub</h1>
+            </div>
+            <div class="d-grid align-items-end mt-5">
+                <h3 class="TextoShareHubFont">El poder de la conexion</h3>
+            </div>
+        </div>
+    </div>
+    <!-- -----------------------------------parte superior, logo, nombre y eslogan-------------- -->
+
+
+    <div class="container">
+        <div class="m-5">
+            <div class=" d-flex align-items-center justify-content-center">
+                <h2 class="justify-content-center align-items-center">Registro</h2>
+            </div>
+            <div class="cuadro rounded-5 p-3 d-flex flex-column justify-content-center">
+                <form [formGroup]="formregistro" (ngSubmit)="submitForm()">
+                    <div class="p-3 ">
+                        <label for="inputPassword" class="TextoShareHubFont visually">Correo electronico</label>
+                        <input id="inputPassword" type="text" class="form-control rounded-5 mt-3"
+                            formControlName="CorreoUser" />
+                        @if (formregistro.get('CorreoUser')?.hasError('required')&&
+                        formregistro.get('CorreoUser')?.touched) {
+                        <div> debes escribir algo en el Correo</div>
+                        }
+                        @if (formregistro.get('CorreoUser')?.hasError('pattern')&&
+                        formregistro.get('CorreoUser')?.touched) {
+                        <div>No cumple los requisitos para ser un correo valido</div>
+                        }
+
+                    </div>
+
+                    <div class="p-3 ">
+                        <label for="inputPassword2" class="TextoShareHubFont visually rounded-5">nombre de usuario
+                        </label>
+                        <input id="inputPassword2" type="text" class="form-control rounded-5 mt-3"
+                            formControlName="nombre" />
+                        @if (formregistro.get('nombre')?.hasError('required')&& formregistro.get('nombre')?.touched) {
+                        <div>Debes tener un nombre de usuario</div>}
+                        @if (formregistro.get('nombre')?.hasError('pattern') && formregistro.get ('nombre')?.touched) {
+                        <div> Eso no es un nombre pendejo</div>}
+                    </div>
+                    <div class="p-3 ">
+                        <label for="inputPassword1" class="TextoShareHubFont visually rounded-5">Contraseña</label>
+                        <input id="inputPassword1" type="password" class="form-control rounded-5 mt-3"
+                            formControlName="clave" />
+                    </div>
+
+                    <div class="p-3 d-flex flex-column justify-content-center ">
+                        <button type="submit" class=" text-black my-3 morado-oscuro-principal fw-bold btn btn-warning rounded-5">registrame
+                        </button>
+                    </div>
+                </form>
+
+                <div class="d-flex justify-content-center p-3 linea2">
+
+                </div>
+                <h6 class="d-flex justify-content-center mt-3 ingresa">O registrate con</h6>
+
+                <div class="d-flex justify-content-center">
+                    <div><i class="fa-brands fa-google m-3 fa-2x"></i></div>
+                    <div><i class="fa-brands fa-facebook m-3 fa-2x"></i></div>
+                    <div><i class="fa-brands fa-apple m-3 fa-2x"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

@@ -1,0 +1,351 @@
+<section class="grupos-page-bg pt-5">
+    <div class="d-flex justify-content-center flex-column mb-4">
+        <div class="text-center TextoShareHubFont">
+            <img [src]="imgGrupo" alt="" class="rounded-circle img-grupo mb-4">
+            <h3 class="text-color mb-2 fw-bold">{{ nombreGrupo }}</h3>
+            <h5 class="text-color fs-6">{{ descripcionGrupo }}</h5>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mb-4">
+        <div class="text-center TextoShareHubFont">
+            <!-- Button trigger modal Publicar en el Grupo -->
+            <button class="btn rounded-pill fw-semibold py-0 px-2 color-btn me-4" data-bs-toggle="modal"
+                data-bs-target="#modalPublicacionDeGrupo">Publicar</button>
+            <!-- Modal Publicar en el Grupo -->
+            <div class="modal fade" id="modalPublicacionDeGrupo" tabindex="-1"
+                aria-labelledby="ModalLabelPublicacionDeGrupo" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-bg">
+                        <form [formGroup]="formPublicaciones" (ngSubmit)="submitFormPublicar()">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 text-white TextoShareHubFont fw-bold"
+                                    id="ModalLabelPublicacionDeGrupo">
+                                    Publicar</h1>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex flex-column">
+                                <div class="d-flex flex-column">
+                                    <label for="textoPublicacion" class="text-color TextoShareHubFont mb-2">¿Que quieres
+                                        decir
+                                        en esta publicacion?</label>
+                                    <textarea name="" id="textoPublicacion" cols="30" rows="5"
+                                        class="inputEditar rounded px-3" formControlName="textPublicacion"></textarea>
+                                </div>
+                                <div class="mb-3 d-flex flex-column">
+                                    <label for="inputImgPublicacion" class="text-color TextoShareHubFont mb-2">Subir
+                                        imagen</label>
+                                    <input type="file" id="inputImgPublicacion" formControlName="imgPublicacion"
+                                        class="rounded-pill inputEditar border-0 px-3" (change)="agregarImg($event)">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-cancelar text-dark fw-semibold"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-guardar fw-semibold">Publicar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal Agregar Miembros -->
+            <button class="btn rounded-pill fw-semibold py-0 px-2 color-btn me-2" data-bs-toggle="modal"
+                data-bs-target="#modalAgregarMiembros" (click)="obtenerUsuarios()"><i
+                    class="fa-solid fa-user-plus"></i></button>
+            <!-- Modal Editar Agregar Miembros -->
+            <div class="modal fade" id="modalAgregarMiembros" tabindex="-1" aria-labelledby="agregarMiembrosModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-bg">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 text-white TextoShareHubFont fw-bold"
+                                id="agregarMiembrosModalLabel">
+                                Agregar Miembros</h1>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!--lista de usuarios -->
+                            <div class="d-flex flex-column">
+                                @for(usuario of listaUsuarios; track usuario._id){
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <img [src]="usuario.imguser" alt="" class="rounded-circle img-usuario me-3">
+                                        <div class="text-white">{{ usuario.nombre }}</div>
+                                    </div>
+                                    <div>
+                                        <button type="button"
+                                            class="btn color-btn text-dark fw-bold rounded-pill w-100 px-3"
+                                            (click)="agregarMiembro(usuario._id)"><i
+                                                class="fa-solid fa-user-plus"></i></button>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal Eliminar Miembros -->
+            <button class="btn rounded-pill fw-semibold py-0 px-2 color-btn me-4" data-bs-toggle="modal"
+                data-bs-target="#modalEliminarMiembros" (click)="obtenerMiembrosEliminar()"><i
+                    class="fa-solid fa-user-minus"></i></button>
+            <!-- Modal Editar Eliminar Miembros -->
+            <div class="modal fade" id="modalEliminarMiembros" tabindex="-1"
+                aria-labelledby="eliminarMiembrosModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-bg">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 text-white TextoShareHubFont fw-bold"
+                                id="eliminarMiembrosModalLabel">
+                                Eliminar Miembros</h1>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!--lista de Miembros -->
+                            <div class="d-flex flex-column">
+                                @for(miembro of listaMiembros; track miembro._id){
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <img [src]="miembro.imguser" alt="" class="rounded-circle img-usuario me-3">
+                                        <div class="text-white">{{ miembro.nombre }}</div>
+                                    </div>
+                                    <div>
+                                        <button type="button"
+                                            class="btn color-btn text-dark fw-bold rounded-pill w-100 px-3"
+                                            (click)="eliminarMiembro(miembro._id)"><i
+                                                class="fa-solid fa-user-minus"></i></button>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal Editar Grupo -->
+            <button (click)="actualizarGrupo(_id)" class="btn rounded-pill fw-semibold py-0 px-2 color-btn"
+                data-bs-toggle="modal" data-bs-target="#modalEditarGrupo">Editar Grupo</button>
+            <!-- Modal Editar Grupo -->
+            <div class="modal fade" id="modalEditarGrupo" tabindex="-1" aria-labelledby="ModalLabelEditarGrupo"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-bg">
+                        <form [formGroup]="formGrupos" (ngSubmit)="submitFormEditar()">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 text-white TextoShareHubFont fw-bold"
+                                    id="ModalLabelEditarGrupo">
+                                    Editar Grupo</h1>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body d-flex flex-column">
+                                <div class="mb-3 d-flex flex-column">
+                                    <label for="inputImgGrupo" class="text-color TextoShareHubFont mb-2">Imagen del
+                                        grupo</label>
+                                    <input type="file" (change)="agregarImagenArr($event)" id="inputImgGrupo"
+                                        class="rounded-pill inputEditar border-0 px-3" formControlName="imgGrupo">
+                                </div>
+                                <div class="mb-3 d-flex flex-column">
+                                    <label for="inputNombreGrupo" class="text-color TextoShareHubFont mb-2">Nombre del
+                                        grupo</label>
+                                    <input type="text" id="inputNombreGrupo"
+                                        class="rounded-pill inputEditar border-0 px-3" formControlName="nombreGrupo">
+                                    <div class="text-danger fw-bold opacity-0"
+                                        [class.opacidadNO]="formGrupos.get('nombreGrupo')?.hasError('required') && formGrupos.get('nombreGrupo')?.touched">
+                                        El nombre del grupo es obligatorio</div>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <label for="inputDescGrupo" class="text-color TextoShareHubFont mb-2">Descripcion
+                                        del
+                                        grupo</label>
+                                    <textarea name="" id="inputDescGrupo" cols="30" rows="5"
+                                        class="inputEditar rounded px-3" formControlName="descripcionGrupo"></textarea>
+                                </div>
+                                <!-- input inputHiddenID -->
+                                <input type="hidden" class="" formControlName="idHidden">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-cancelar text-dark fw-semibold"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-guardar fw-semibold">Guardar cambios</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center flex-column text-center">
+        <ul class="nav nav-tabs d-flex justify-content-around" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active text-color" id="home-tab" data-bs-toggle="tab"
+                    data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                    aria-selected="true" (click)="mostrarPublicaciones()">Publicaciones</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-color" id="profile-tab" data-bs-toggle="tab"
+                    data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
+                    aria-selected="false">Fotos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link text-color" id="contact-tab" data-bs-toggle="tab"
+                    data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane"
+                    aria-selected="false" (click)="mostrarMiembros()">Miembros</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="text-white tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+                aria-labelledby="home-tab" tabindex="0">
+                @for (item of publicacionesDataUsuario; track item._id) {
+                    <div class="caja my-3 p-3">
+
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex m-2" [routerLink]="['/perfil', item._id]">
+                                <div class="me-3"><img class="rounded-circle usuario" src="{{item.imgUsuario}}" alt=""></div>
+                                <div class="TextoShareHubFont d-grid align-items-center text-white ms-3">
+                                    <h4 class="m-0 TextoShareHubFont fw-bold">{{item.nombreUsuario}}</h4>
+                                </div>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn  text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">. . .</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" (click)="actualizarPublicacionX(item._id)" data-bs-toggle="modal"
+                                            [attr.data-bs-target]="'#exampleModalX'+item._id" (click)="payloadInfo()" type="button">Editar</a>
+                                    </li>
+                                    <li><a class="dropdown-item" (click)="eliminarPublicacion(item._id)" type="submit">Eliminar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <img class="mt-3 imgPublicacion" src="{{item.imagenPublicacion}}" alt="">
+                        </div>
+                        <div class="text-white p-2 mt-3">
+                            <p class="">{{item.textPublicacion}}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-around text-white">
+                            <div>
+                                <label class="Corazon x">
+                                    <input type="checkbox">
+                                    <div class="checkmarkCorazon">
+                                        <svg viewBox="0 0 256 256">
+                                            <rect fill="none" height="256" width="256"></rect>
+                                            <path
+                                                d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+                                                stroke-width="20px" stroke="#FFF" fill="none"></path>
+                                        </svg>
+                                    </div>
+                                </label>
+                                <!-- <button class="btn">
+                                    <i class="fa-regular fa-heart fa-2x text-white " ></i>
+                                </button> -->
+                            </div>
+                            <div>
+                                <button class="btn" (click)="toggleInput()">
+                                    <i class="fa-solid fa-comments fa-2x text-white"></i>
+                                </button>
+                            </div>
+                            <div>
+                                <label class="BookmarkButton">
+                                    <input type="checkbox">
+                                    <div class="checkmarkBookmarkButton">
+                                        <!-- Ícono de marcador personalizado -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="41" height="41" fill="#FFF">
+                                            <path d="M17 2H7C5.9 2 5.01 2.9 5.01 4L5 21l7-3 7 3V4c0-1.1-.9-2-2-2z" />
+                                        </svg>
+                                    </div>
+                                </label>
+                                <!-- <button class="btn ">
+                                    <i class="fa-regular fa-bookmark fa-2x text-white"></i>
+                                </button> -->
+                            </div>
+                        </div>
+                        <div class="comentario mt-3" *ngIf="mostrarInput">
+                            <div class="dropdown d-flex justify-content-end">
+                                <button class="btn  text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">. . .</button>
+                                <ul class="dropdown-menu">
+                                    <li><button type="button" class="dropdown-item" (click)="payloadInfo()"
+                                            (click)="actualizarPublicacionX(item._id)">Editar</button></li>
+                                    <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                                </ul>
+                            </div>
+                            <div class="d-flex mt-3 m-2">
+                                <div class="ms-4 me-2"><img class="usuario2" src="{{item.imgUsuario}}" alt=""></div>
+                                <div class="TextoShareHubFont d-grid align-items-center text-white ms-1">
+                                    <h6 class="m-0 mb-1 fw-bold TextoShareHubFont">{{item.nombreUsuario}}</h6>
+                                    <h6 class="TextoShareHubFont ms-3 text-white">{{item.comentario}}</h6>
+
+                                </div>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="text" class="form-control rounded-2 mt-3" placeholder="Ingrasa tu comentario" />
+                                <button class=" btn " (click)="toggleInput()">
+                                    <i class="fa-solid fa-check fa-2x d-grid align-content-center mt-3 ms-2 text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+
+                        <!-------------------------------------------------- Modal -------------------------------->
+                        <div class="modal fade " [id]="'exampleModalX'+item._id" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form class="modal-content modal-bg" [formGroup]="formPublicaciones"
+                                    (ngSubmit)="submitPublicacionEditada(item._id)">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title TextoShareHubFont fw-bold text-white fs-5" id="exampleModalLabel">Publicar
+                                        </h1>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex flex-column">
+                                            <label for="inputXX" class="text-color TextoShareHubFont mb-2">¿Que quieres decir en esta
+                                                publicacion?</label>
+                                            <textarea type="text" name="" id="inputXX" cols="30" rows="5" class="inputEditarX rounded px-3"
+                                                formControlName="textPublicacion"></textarea>
+                                        </div>
+                                        <div class="mb-3 d-flex flex-column">
+                                            <label for="inputX" class="text-color TextoShareHubFont mb-2">Subir imagen</label>
+                                            <input type="file" (change)="agregarImg($event)" formControlName="imgPublicacion" id="inputX"
+                                                class="rounded-pill inputEditarX border-0 px-3">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn  text-dark btn-cancelar fw-semibold"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-guardar fw-semibold">Publicar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    }
+            </div>
+            <div class="text-white tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                tabindex="0">
+                <div class="d-flex flex-wrap justify-content-center">
+                @for (item of publicacionesDataUsuario; track item) {
+                        <img class="m-3 imgPublicacion w-25 h-25" src="{{item.imagenPublicacion}}" alt="">
+                }
+            </div>
+            </div>
+            <div class="text-white tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                tabindex="0">
+                <div class="p-5 d-flex flex-wrap">
+                    @for(miembro of listaMiembros; track miembro._id){
+                    <div class="m-4" [routerLink]="['/perfil', miembro._id]">
+                        <img [src]="miembro.imguser" alt="" class="rounded-circle img-usuario-variacion mb-2">
+                        <div class="text-white text-center TextoShareHubFont fs-5">{{ miembro.nombre }}</div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+body {
+    background-color: var(--morado-oscuro-principal);
+}
+.usuario {
+    border-radius: 100%;
+    width: 45px;
+}
+.caja {
+    border: 1px solid var(--morado-claro);
+}
+.imgPublicacion {
+    width: 100%;
+    height: 50%;
+}
+

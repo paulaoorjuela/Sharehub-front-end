@@ -1,0 +1,18 @@
+<section class="mt-5 px-5 section-heigth">
+    <div class="TextoShareHubFont fw-bold text-center text-white fs-2 mb-4">Crea un nuevo Grupo</div>
+    <form [formGroup]="formGrupos" (ngSubmit)="submitForm()" class="d-flex flex-column text-white">
+
+        <label for="nombre-grupo" class="mb-2 form-label">Nombre del Grupo</label>
+        <input type="text" id="nombre-grupo" class="rounded-pill border-0 mb-1 p-2 form-control" formControlName="nombreGrupo">
+        <div class="text-danger fw-bold opacity-0" [class.opacidadNO]="formGrupos.get('nombreGrupo')?.hasError('required') && formGrupos.get('nombreGrupo')?.touched">
+            El nombre del grupo es obligatorio</div>
+
+        <label for="descripcion-grupo" class="mb-2 mt-1">Descripcion del Grupo</label>
+        <input type="text" id="descripcion-grupo" class="rounded-pill border-0 mb-3 p-2" formControlName="descripcionGrupo">
+        <label for="img-grupo" class="mb-2 mt-2">Imagen del Grupo</label>
+        <input type="file" (change)="agregarImagenArr($event)" name="fotoGrupo" id="img-grupo" class="form-control mb-3 p-2" formControlName="imgGrupo">
+        <div class="d-flex justify-content-center mt-2">
+            <button type="submit" class="btn rounded-pill w-50 btn-crear-grupo border-0">Crear</button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,14 @@
+<ul class="list-group mt-5">
+    @if (usuariosEncontrados && usuariosEncontrados.length > 0) {
+    @for(usuario of usuariosEncontrados; track usuario._id){
+    <div class="mb-2 lista-usuarios" [routerLink]="['/perfil', usuario._id]">
+        <li class="list-group-item d-flex align-items-center bg-lista rounded-1 py-3">
+            <img [src]="usuario.imguser" alt="" class="rounded-circle img-usuario me-4">
+            <div class="TextoShareHubFont fs-5 fw-bolder text-white">{{ usuario.nombre }}</div>
+        </li>
+    </div>
+    }
+    }@else if(!usuariosEncontrados || usuariosEncontrados.length === 0){
+    <div class="text-white fs-1 fw-bold text-center mt-5 page-height">No se encontraron usuarios.</div>
+    }
+</ul>

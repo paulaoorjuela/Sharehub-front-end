@@ -1,0 +1,85 @@
+.contenedorIzq{
+    width: 200px;
+    border-right: 1px solid var(--morado-claro);
+}
+
+@media (max-width: 1190.40px) {
+    .contenedorDer{
+        display: none;
+    }
+}
+/* asndkjbasd */
+.login {
+    background-color: var(--morado-oscuro-principal) !important ;
+    color :white;
+    height: 100vh;
+}
+body {
+    background-color: var(--morado-oscuro-principal) !important ;
+
+}
+.nombre {
+    font-size: 70px;
+}
+
+.linea {
+    border-right: 2px solid #c97bf6;
+}
+.boton {
+    margin-bottom: 30px !important;
+    width: 60px;
+    height: 60px;
+    background-color: var(--amarillo-principal);
+
+}
+.cuadro {
+    background-color:var(--morado-oscuro-secundario);
+
+
+}
+.linea2 {
+    border-bottom: 2px solid #c97bf6;
+}
+.ingresa {
+    color: var(--morado-claro);
+}
+.esta{
+    width: 45px;
+    border-radius: 100%;
+}
+.text-color{
+    color: var(--morado-claro);
+}
+.inputEditar{
+    background-color: #ffff;
+}
+.modal-bg{
+    background-color: var(--morado-oscuro-principal);
+}
+.btn-cancelar{
+    background-color: var(--morado-claro);
+}
+.btn-guardar{
+    background-color: var(--amarillo-principal);
+}
+.esta{
+    margin: 200px;
+}
+.clase{
+margin-inline: auto;
+    width: fit-content;
+}
+.medidaimg{
+    width: 30px;
+    height: 30px;
+}
+
+.btnResponsive {
+    background-color: var(--morado-oscuro-secundario);
+    height: 56px;
+}
+
+.color-btn {
+    background-color: var(--amarillo-principal);
+    height: 27px;
+}

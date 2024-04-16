@@ -1,0 +1,15 @@
+.btn-crear-grupo{
+    background-color: var(--amarillo-principal);
+}
+
+.btn-crear-grupo:hover{
+    color: var(--morado-oscuro-principal);
+}
+
+.opacidadNO {
+    opacity: 1 !important;
+}
+
+.section-heigth{
+    height: 620px;
+}

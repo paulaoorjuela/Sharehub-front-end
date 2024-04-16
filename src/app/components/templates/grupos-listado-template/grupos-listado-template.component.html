@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between align-items-center mb-3 color-border-lista rounded-1 py-3 px-5">
+    <div>
+        <a [routerLink]="['/grupos', idGrupo]">
+            <img [src]="imgGrupo" alt="" class="img-grupo rounded-circle me-4">
+        </a>
+        <a class="TextoShareHubFont text-white fs-6 fw-semibold text-decoration-none" [routerLink]="['/grupos', idGrupo]">{{
+            nombreGrupo }}</a>
+    </div>
+    <div class="btn text-white"><i class="fa-solid fa-trash" (click)="eliminarGrupo(idGrupo)"></i></div>
+</div>

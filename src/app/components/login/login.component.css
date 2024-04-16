@@ -1,0 +1,52 @@
+.login {
+    background-color: var(--morado-oscuro-principal);
+    color :white;
+    height: 100vh;
+}
+body {
+    background-color: var(--morado-oscuro-principal);
+
+}
+
+.linea {
+    border-right: 2px solid #c97bf6;
+}
+.boton {
+    color: var(--amarillo-principal);
+
+}
+.cuadro {
+    background-color: var(--morado-oscuro-secundario);
+    box-shadow:  30px 30px 56px #0b001f,
+    -30px -30px 56px #150037;
+
+}
+
+@media (max-width: 414px) {
+    .cuadro{
+        width: 100% !important;
+    }
+}
+
+.linea2 {
+    border-bottom: 2px solid #c97bf6;
+}
+.ingresa {
+    color: var(--morado-claro);
+}
+.opacidad {
+    opacity: 1 !important;
+}
+.alerta {
+    position: absolute;
+    top: 298px;
+}
+.alerta2 {
+    position: absolute;
+    top: 401px;
+}
+
+.link-registro{
+    color: var(--morado-claro);
+}
+

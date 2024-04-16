@@ -1,0 +1,17 @@
+.img-usuario{
+    width: 60px;
+    height: 60px;
+}
+
+.bg-lista{
+    background-color: var(--morado-oscuro-principal);
+}
+
+.page-height{
+    height: 450px;
+
+}
+
+.lista-usuarios{
+cursor: pointer !important;
+}

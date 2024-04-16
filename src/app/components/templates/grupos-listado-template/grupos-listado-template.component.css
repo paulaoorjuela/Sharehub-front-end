@@ -1,0 +1,13 @@
+.img-grupo{
+    width: 50px;
+    height: 50px;
+}
+
+.container-grupo-info{
+    height: 150px;
+    width: 90%;
+}
+
+.color-border-lista{
+    border: 1px solid var(--morado-claro);
+}

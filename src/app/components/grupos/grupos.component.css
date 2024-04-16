@@ -1,0 +1,214 @@
+.img-grupo {
+    width: 200px;
+    height: 200px;
+}
+
+.opacidadNO {
+    opacity: 1 !important;
+}
+
+.grupos-page-bg {
+    background-color: var(--morado-oscuro-principal);
+}
+
+.text-color {
+    color: var(--morado-claro);
+}
+
+.color-btn {
+    background-color: var(--amarillo-principal);
+}
+
+.modal-bg {
+    background-color: var(--morado-oscuro-principal);
+}
+
+.inputEditar {
+    background-color: #ffff;
+}
+
+.btn-guardar {
+    background-color: var(--amarillo-principal);
+}
+
+.btn-cancelar {
+    background-color: var(--morado-claro);
+}
+
+.img-usuario {
+    width: 50px;
+    height: 50px;
+}
+
+.img-usuario-variacion {
+    width: 180px;
+    height: 180px;
+}
+
+.usuario {
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+}
+.usuario2 {
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+}
+.caja {
+    border: 1px solid var(--morado-claro);
+    border-radius: 8px;
+}
+.imgPublicacion {
+    width: 700px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.comentar {
+    background-color: var(--morado-oscuro-principal);
+}
+.comentario {
+    border-top: 1px solid var(--morado-claro);
+}
+.esta {
+    width: 45px;
+    border-radius: 100%;
+}
+.text-color {
+    color: var(--morado-claro);
+}
+.inputEditar {
+    background-color: #ffff;
+}
+.modal-bg {
+    background-color: var(--morado-oscuro-principal);
+}
+.btn-cancelar {
+    background-color: var(--morado-claro);
+}
+.btn-guardar {
+    background-color: var(--amarillo-principal);
+}
+.esta {
+    margin: 200px;
+}
+/* .oculto {
+    display: block;
+} */
+
+/* ---------------------------------------- */
+/* ----Corazon-------------- */
+
+.Corazon input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.Corazon {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+    transition: 100ms;
+    height: 41px;
+    width: 41px;
+}
+
+.checkmarkCorazon {
+    top: 0;
+    left: 0;
+    height: 2em;
+    width: 2em;
+    transition: 100ms;
+    animation: dislike_effect 400ms ease;
+}
+
+.Corazon input:checked ~ .checkmarkCorazon path {
+    fill: #ff5353;
+    stroke-width: 0;
+}
+
+.Corazon input:checked ~ .checkmarkCorazon {
+    animation: like_effect 400ms ease;
+}
+
+@keyframes like_effect {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes dislike_effect {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ---------------------------------------- */
+.BookmarkButton input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.BookmarkButton {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 24px; /* Tamaño ajustado */
+    user-select: none;
+    transition: 100ms;
+    height: 66px; /* Altura ajustada */
+    width: 48px; /* Ancho ajustado */
+}
+
+.checkmarkBookmarkButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 41px; /* Altura ajustada */
+    width: 41px; /* Ancho ajustado */
+    transition: 100ms;
+}
+
+.BookmarkButton input:checked ~ .checkmarkBookmarkButton path {
+    fill: var(--amarillo-principal); /* Cambio de color */
+    stroke-width: 0;
+}
+
+.BookmarkButton input:checked ~ .checkmarkBookmarkButton {
+    animation: like_effect 400ms ease;
+}
+
+@keyframes like_effect {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

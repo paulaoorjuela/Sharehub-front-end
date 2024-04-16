@@ -1,0 +1,129 @@
+<div class="caja my-3 p-3">
+
+    <div class="d-flex justify-content-between">
+        <div class="d-flex m-2" (click)="redireccionUsuario(idUsuario)">
+            <div class="me-3"><img class="usuario" src="{{rutaImagenUsuario}}" alt=""></div>
+            <div class="TextoShareHubFont d-grid align-items-center text-white ms-3">
+                <h4 class="m-0 TextoShareHubFont fw-bold">{{rutaNombre}}</h4>
+            </div>
+        </div>
+        <div class="dropdown">
+            @if (verificarIDUsuario) {
+            <button class="btn  text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">. . .</button>
+            }
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" (click)="actualizarPublicacionX(rutaId)" data-bs-toggle="modal"
+                        [attr.data-bs-target]="'#exampleModalX'+rutaId"  type="button">Editar</a>
+                </li>
+                <li><a class="dropdown-item" (click)="eliminarPublicacion(rutaId)" type="submit">Eliminar</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        @if (rutaImagen) {        <img class=" mt-3 imgPublicacion" src="{{rutaImagen}}" alt="">
+    }
+    </div>
+    <div class="text-white p-2 mt-3">
+        <p class="">{{rutaComentario}}</p>
+    </div>
+
+    <div class="d-flex justify-content-around text-white">
+        <div>
+            <label class="Corazon x">
+                <input type="checkbox">
+                <div class="checkmarkCorazon">
+                    <svg viewBox="0 0 256 256">
+                        <rect fill="none" height="256" width="256"></rect>
+                        <path
+                            d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+                            stroke-width="20px" stroke="#FFF" fill="none"></path>
+                    </svg>
+                </div>
+            </label>
+            <!-- <button class="btn">
+                <i class="fa-regular fa-heart fa-2x text-white " ></i>
+            </button> -->
+        </div>
+        <div>
+            <button class="btn " (click)="toggleInput()">
+                <i class="fa-solid fa-comments fa-2x text-white"></i>
+            </button>
+        </div>
+        <div>
+            <label class="BookmarkButton">
+                <input type="checkbox">
+                <div class="checkmarkBookmarkButton">
+                    <!-- Ícono de marcador personalizado -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="41" height="41" fill="#FFF">
+                        <path d="M17 2H7C5.9 2 5.01 2.9 5.01 4L5 21l7-3 7 3V4c0-1.1-.9-2-2-2z" />
+                    </svg>
+                </div>
+            </label>
+            <!-- <button class="btn ">
+                <i class="fa-regular fa-bookmark fa-2x text-white"></i>
+            </button> -->
+        </div>
+    </div>
+    <div class="comentario mt-3" *ngIf="mostrarInput">
+        <div class="dropdown d-flex justify-content-end">
+            @if (verificarIDUsuario) {
+            <button class="btn  text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">. . .</button>
+            }
+            <ul class="dropdown-menu">
+                <li><button type="button" class="dropdown-item"
+                        (click)="actualizarPublicacionX(rutaId)">Editar</button></li>
+                <li><a class="dropdown-item" href="#">Eliminar</a></li>
+            </ul>
+        </div>
+        <div class="d-flex mt-3 m-2">
+            <div class="ms-4 me-2"><img class="usuario2" src="{{rutaImagenUsuario}}" alt=""></div>
+            <div class="TextoShareHubFont d-grid align-items-center text-white ms-1">
+                <h6 class="m-0 mb-1 fw-bold TextoShareHubFont">{{rutaNombre}}</h6>
+                <h6 class="TextoShareHubFont ms-3 text-white" >{{rutaTexto}}</h6>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <input type="text" class="form-control rounded-2 mt-3" placeholder="Ingrasa tu comentario" />
+            <button class=" btn " (click)="toggleInput()">
+                <i class="fa-solid fa-check fa-2x d-grid align-content-center mt-3 ms-2 text-white"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div>
+
+    <!-------------------------------------------------- Modal -------------------------------->
+    <div class="modal fade " [id]="'exampleModalX'+rutaId" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="modal-content modal-bg" [formGroup]="formPublicaciones"
+                (ngSubmit)="submitPublicacionEditada(rutaId)">
+                <div class="modal-header">
+                    <h1 class="modal-title TextoShareHubFont fw-bold text-white fs-5" id="exampleModalLabel">Publicar
+                    </h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex flex-column">
+                        <label for="inputXX" class="text-color TextoShareHubFont mb-2">¿Que quieres decir en esta
+                            publicacion?</label>
+                        <textarea type="text" name="" id="inputXX" cols="30" rows="5" class="inputEditarX rounded px-3"
+                            formControlName="textPublicacion"></textarea>
+                    </div>
+                    <div class="mb-3 d-flex flex-column">
+                        <label for="inputX" class="text-color TextoShareHubFont mb-2">Subir imagen</label>
+                        <input type="file" (change)="agregarImg($event)" formControlName="imgPublicacion" id="inputX"
+                            class="rounded-pill inputEditarX border-0 px-3">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  text-dark btn-cancelar fw-semibold"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-guardar fw-semibold">Publicar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+<section class="TextoShareHubFont d-flex flex-column pt-5">
+    <div class="row mx-5">
+        <div class="col-lg-4 col-12 d-flex justify-content-center">
+            <img [src]="imguser" alt="" class="rounded-circle img-perfil mb-4">
+        </div>
+        <div class="col-lg-8 col-12 d-flex flex-column justify-content-between">
+            <div>
+                <div class="d-flex justify-content-between">
+                    <h3 class="text-color mb-2 fw-bold">{{ nombre }}</h3>
+                    @if (verificarIDUsuario) {
+                    <!-- Button trigger modal Editar -->
+                    <button (click)="actualizarPerfil(_id)" class="btn rounded-pill fw-semibold py-0 px-2 color-btn"
+                        data-bs-toggle="modal" data-bs-target="#modalEditarPerfil">Editar</button>
+                    }
+                    <!-- Modal Editar -->
+                    <div class="modal fade" id="modalEditarPerfil" tabindex="-1"
+                        aria-labelledby="ModalLabelEditarPerfil" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content modal-bg">
+                                <form [formGroup]="formPerfil" (ngSubmit)="submitFormEditar()">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5 text-white TextoShareHubFont fw-bold"
+                                            id="ModalLabelEditarPerfil">
+                                            Editar</h1>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column">
+                                        <div class="mb-3 d-flex flex-column">
+                                            <label for="inputImgPerfil" class="text-color TextoShareHubFont mb-2">Foto
+                                                de
+                                                perfil</label>
+                                            <input type="file" (change)="agregarImagenArr($event)" id="inputImgPerfil"
+                                                class="rounded-pill inputEditar border-0 px-3"
+                                                formControlName="imguser">
+                                        </div>
+                                        <div class="mb-3 d-flex flex-column">
+                                            <label for="inputNombreUsuario"
+                                                class="text-color TextoShareHubFont mb-2">Nombre
+                                                de
+                                                usuario</label>
+                                            <input type="text" id="inputNombreUsuario"
+                                                class="rounded-pill inputEditar border-0 px-3" formControlName="nombre">
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <label for="inputDescPerfil"
+                                                class="text-color TextoShareHubFont mb-2">Descripción</label>
+                                            <textarea name="" id="inputDescPerfil" cols="30" rows="5"
+                                                class="inputEditar rounded px-3"
+                                                formControlName="descripcionuser"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-cancelar text-dark fw-semibold"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-guardar fw-semibold">Guardar
+                                            cambios</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="text-color fs-6">{{ descripcionuser }}</h5>
+            </div>
+            <div class="d-flex pb-3">
+                <h5 class="text-color">Mis Amigos</h5>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center flex-column text-center">
+        <div class="d-flex justify-content-center mb-1">
+            <div class="linea"></div>
+        </div>
+
+        <section class="d-flex justify-content-center flex-column text-center">
+            <ul class="nav nav-tabs d-flex justify-content-around" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active text-color" id="home-tab" data-bs-toggle="tab"
+                        data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                        aria-selected="true" (click)="cargarPublicacionesUsuario()">Publicaciones</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-color" id="profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
+                        aria-selected="false">Fotos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-color" id="contact-tab" data-bs-toggle="tab"
+                        data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane"
+                        aria-selected="false">Guardados</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                    tabindex="0">
+                    @for (item of publicaciones; track item) {
+                        <app-hijo-inicio
+                        [rutaImagenUsuario]="imguser"
+                        [rutaNombre]="nombre"
+                        [rutaImagen]="item.imagenPublicacion"
+                        [rutaComentario]="item.textPublicacion"
+                        [rutaId]="item._id"
+                        [rutaTexto]="item.comentario"
+                        [idUsuario]="item.idUsuario"
+                    ></app-hijo-inicio>
+                    }
+                </div>
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                    tabindex="0">...</div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                    tabindex="0">...</div>
+            </div>
+        </section>
+    </div>
+    <div>
+    </div>
+</section>
+

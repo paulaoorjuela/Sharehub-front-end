@@ -1,0 +1,64 @@
+
+
+.login {
+    background-color: var(--morado-oscuro-principal) !important ;
+    color :white;
+    height: 100vh;
+}
+body {
+    background-color: var(--morado-oscuro-principal) !important ;
+
+}
+.nombre {
+    font-size: 70px;
+}
+
+.linea {
+    border-right: 2px solid #c97bf6;
+}
+.boton {
+    height: 40px;
+    width: 40px;
+    background-color: var(--amarillo-principal);
+    color: var(--morado-oscuro-principal);
+}
+.cuadro {
+    background-color:var(--morado-oscuro-secundario);
+
+
+}
+.linea2 {
+    border-bottom: 2px solid #c97bf6;
+}
+.ingresa {
+    color: var(--morado-claro);
+}
+.esta{
+width: 50px;
+height: 50px;
+border-radius: 100%;
+
+}
+.text-color{
+    color: var(--morado-claro);
+}
+.inputEditar{
+    background-color: #ffff;
+}
+.modal-bg{
+    background-color: var(--morado-oscuro-principal);
+}
+.btn-cancelar{
+    background-color: var(--morado-claro);
+}
+.btn-guardar{
+    background-color: var(--amarillo-principal);
+}
+.tamaño_caja{
+    width: 444px;
+}
+@media (max-width: 1700px) {
+    .tamaño_caja{
+        width: 300px;
+    }
+}

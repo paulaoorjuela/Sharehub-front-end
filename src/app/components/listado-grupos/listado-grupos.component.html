@@ -1,0 +1,9 @@
+<section class="mb-5 heigth-section">
+    <div class="TextoShareHubFont text-center text-white fw-bold fs-3 my-5">Mis grupos</div>
+    <section>
+        @for (grupo of gruposData(); track grupo._id) {
+        <app-grupos-listado-template [nombreGrupo]="grupo.nombreGrupo" [idGrupo]="grupo._id"
+            [imgGrupo]="grupo.imgGrupo" (dataGrupoTemplate)="GrupoDesdeTemplate($event, grupo._id)"></app-grupos-listado-template>
+        }
+    </section>
+</section>

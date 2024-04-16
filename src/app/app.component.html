@@ -1,0 +1,61 @@
+<!-- condicional para entrar primero a login y luego de la validacion a la pagina de inicio mirar appComponens para referencia -->
+@if (sesionUsuario) {
+<app-navbar></app-navbar>
+<div class="row w-100">
+    <div class="col-12 d-none d-lg-block col-lg-2 contenedorIzq">
+        <app-menu-izquierda></app-menu-izquierda>
+    </div>
+    <div class="ps-4 col-12 col-lg-7 ">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="col-lg-3 contenedorDer">
+        <app-menu-derecha></app-menu-derecha>
+    </div>
+    <div class="d-flex justify-content-end sticky-bottom me-5 clase ">
+        <!--------------------------------------------- Button trigger modal ----------------------->
+        <div class="d-none d-lg-flex clase">
+            <button type="button" class="rounded-circle boton btn my-2 mx-1" data-bs-toggle="modal"
+                data-bs-target="#modalPublicar" (click)="payloadInfo()"><i class="fa-solid fa-plus fw-bold"></i></button>
+        </div>
+    </div>
+    <!-------------------------------------------------- Modal -------------------------------->
+    <div class="modal fade " id="modalPublicar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="modal-content modal-bg" [formGroup]="formPublicaciones" (ngSubmit)="submitPublicacion()">
+                <div class="modal-header">
+                    <h1 class="modal-title TextoShareHubFont fw-bold text-white fs-5" id="exampleModalLabel">Publicar
+                    </h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex flex-column">
+                        <label for="inputDescGrupo" class="text-color TextoShareHubFont mb-2">¿Que quieres decir en esta
+                            publicacion?</label>
+                        <textarea type="text" name="" id="inputDescGrupo" cols="30" rows="5"
+                            class="inputEditar rounded px-3" formControlName="textPublicacion"></textarea>
+                    </div>
+                    <div class="mb-3 d-flex flex-column">
+                        <label for="inputNombreGrupo" class="text-color TextoShareHubFont mb-2">Subir imagen</label>
+                        <input type="file" (change)="agregarImg($event)" formControlName="imgPublicacion"
+                            id="inputNombreGrupo" class="rounded-pill inputEditar border-0 px-3">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn  text-dark btn-cancelar fw-semibold"
+                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-guardar fw-semibold">Publicar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<div class="d-lg-none fixed-bottom d-flex justify-content-center align-items-center btnResponsive">
+    <button type="button" class="btn rounded-pill color-btn fw-semibold py-0 px-2" data-bs-toggle="modal"
+    data-bs-target="#modalPublicar" (click)="payloadInfo()">Publicar</button>
+</div>
+}@else {
+<router-outlet></router-outlet>
+
+}
