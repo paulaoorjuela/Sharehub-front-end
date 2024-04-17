@@ -1,4 +1,4 @@
-<div class="chat_window container">
+<div class="chat_window container mb-5">
     <div class="top_menu">
         <div class="buttons">
             <!-- <div class="button close"></div>
@@ -11,21 +11,25 @@
         </div>
     </div>
     <ul class="messages TextoShareHubFont">
-      @for (item of messageList; track $index) {
-        <li class="message right" [ngClass]="{'left': item.message_side === 'receiver', 'right' : item.message_side === 'sender'}">
+        @for (item of messageList; track $index) {
+        <li class="message right"
+            [ngClass]="{'left': item.message_side === 'receiver', 'right' : item.message_side === 'sender'}">
             <div class="avatar">
-                <img class=" avatar" src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg" alt="">
+                <img class=" avatar"
+                    src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg"
+                    alt="">
             </div>
             <div class="text_wrapper">
                 <div class="text TextoShareHubFont">{{item.message}}</div>
             </div>
         </li>
-      }
+        }
 
     </ul>
     <div class="bottom_wrapper clearfix">
         <div class="message_input_wrapper">
-            <input id="inputText" (keydown.enter)="sendMessage()"  class="message_input TextoShareHubFont" placeholder="Message..." [formControl]="messageInput">
+            <input id="inputText" (keydown.enter)="sendMessage()" class="message_input TextoShareHubFont"
+                placeholder="Message..." [formControl]="messageInput">
         </div>
         <div class="send_message " (click)="sendMessage()">
             <div class="icon"></div>
