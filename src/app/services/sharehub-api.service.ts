@@ -80,7 +80,7 @@ export class SharehubApiService {
         });
     }
 
-    // usuarios ---------------------------------------------------------
+    //   -------------------------- SERVICE USUARIOS --------------------------
     getUsuario(CorreoUser: string) {
         return this.http.get(`${this.urlApi}/consultar-usuario/${CorreoUser}`);
     }
@@ -124,7 +124,7 @@ export class SharehubApiService {
             return { msg: 'sin token' };
         }
     }
-    // ------------------------------------Servicios Publicacion---------------------
+    //   -------------------------- SERVICE PUBLICACIONES --------------------------
 
     // getPublicacionesGrupos(): Observable<any[]> {
     //     return this.publicacionesGrupos.asObservable();
@@ -187,7 +187,7 @@ export class SharehubApiService {
     putPublicacion(publicacionId: string, dataPublicacion:any) {
         return this.http.put(`${this.urlApi}/actualizar-publicacion/${publicacionId}/publicacion`, dataPublicacion)
     }
-    // -------------------------------------Validacion token------------------------
+    //   -------------------------- TOKEN VALIDATION --------------------------
     estaLogueado(): boolean {
         let estado = sessionStorage.getItem('token') ? true : false;
         return estado;
