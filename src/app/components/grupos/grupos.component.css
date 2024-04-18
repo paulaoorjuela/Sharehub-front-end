@@ -45,6 +45,16 @@
     height: 180px;
 }
 
+@media (max-width: 500px) {
+    .img-usuario-variacion {
+        width: 54px !important;
+        height: 54px !important;
+    }
+    .texto-usuario-variacion{
+        font-size: 13px !important;
+    }
+}
+
 .usuario {
     border-radius: 100%;
     width: 45px;

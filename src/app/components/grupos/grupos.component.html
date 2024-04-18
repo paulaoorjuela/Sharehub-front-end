@@ -196,7 +196,7 @@
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="text-white tab-pane fade show active" id="home-tab-pane" role="tabpanel"
+            <div class="text-white tab-pane fade show active pb-5" id="home-tab-pane" role="tabpanel"
                 aria-labelledby="home-tab" tabindex="0">
                 @for (item of publicacionesDataUsuario; track item._id) {
                     <div class="caja my-3 p-3">
@@ -341,7 +341,7 @@
                     @for(miembro of listaMiembros; track miembro._id){
                     <div class="m-4" [routerLink]="['/perfil', miembro._id]">
                         <img [src]="miembro.imguser" alt="" class="rounded-circle img-usuario-variacion mb-2">
-                        <div class="text-white text-center TextoShareHubFont fs-5">{{ miembro.nombre }}</div>
+                        <div class="text-white text-center TextoShareHubFont fs-5 texto-usuario-variacion">{{ miembro.nombre }}</div>
                     </div>
                     }
                 </div>
