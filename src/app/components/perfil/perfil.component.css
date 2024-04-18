@@ -5,6 +5,7 @@
 
 .color-btn{
     background-color: var(--amarillo-principal)!important;
+    height: fit-content;
 }
 
 @media (max-width: 414px) {

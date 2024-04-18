@@ -105,7 +105,7 @@
                     tabindex="0">
                     <div class="d-flex flex-wrap justify-content-center">
                         @for (item of publicacionesDataUsuario; track item) {
-                        <img class="m-3 imgPublicacion w-25 h-25" src="{{item.imagenPublicacion}}" alt="">
+                        <img class="m-3 imgPublicacion w-25 h-25" [src]="item.imagenPublicacion" alt="">
                         }
                     </div>
                     <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
