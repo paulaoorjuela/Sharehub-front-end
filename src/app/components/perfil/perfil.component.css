@@ -3,6 +3,10 @@
     height: 200px;
 }
 
+.color-btn{
+    background-color: var(--amarillo-principal)!important;
+}
+
 @media (max-width: 414px) {
     .img-perfil {
         width: 220px !important;

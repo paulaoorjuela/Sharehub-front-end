@@ -95,25 +95,25 @@
                 <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                     tabindex="0">
                     @for (item of publicaciones; track item) {
-                        <app-hijo-inicio
-                        [rutaImagenUsuario]="imguser"
-                        [rutaNombre]="nombre"
-                        [rutaImagen]="item.imagenPublicacion"
-                        [rutaComentario]="item.textPublicacion"
-                        [rutaId]="item._id"
-                        [rutaTexto]="item.comentario"
-                        [idUsuario]="item.idUsuario"
-                    ></app-hijo-inicio>
+                    <app-hijo-inicio [rutaImagenUsuario]="imguser" [rutaNombre]="nombre"
+                        [rutaImagen]="item.imagenPublicacion" [rutaComentario]="item.textPublicacion"
+                        [rutaId]="item._id" [rutaTexto]="item.comentario"
+                        [idUsuario]="item.idUsuario"></app-hijo-inicio>
                     }
                 </div>
                 <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
-                    tabindex="0">...</div>
-                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
-                    tabindex="0">...</div>
+                    tabindex="0">
+                    <div class="d-flex flex-wrap justify-content-center">
+                        @for (item of publicacionesDataUsuario; track item) {
+                        <img class="m-3 imgPublicacion w-25 h-25" src="{{item.imagenPublicacion}}" alt="">
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                        tabindex="0">...</div>
+                </div>
             </div>
         </section>
     </div>
     <div>
     </div>
 </section>
-
