@@ -7,6 +7,12 @@
     font-family: "Calibri", "Roboto", sans-serif;
   }
 
+  .message.right{
+    display: flex !important;
+    justify-content: end !important;
+    flex-direction: row-reverse !important;
+  }
+
   .chat_window {
     /* position: absolute; */
     /* width: calc(100% - 20px); */
@@ -88,6 +94,7 @@
   .messages .message.left .text_wrapper {
     background-color:  #261D46;
     margin-left: 20px;
+    width: auto;
   }
 
   .messages .message.left .text_wrapper::after,
@@ -106,15 +113,16 @@
   }
 
   .messages .message.right .text_wrapper {
-    background-color: #d8b2e7;
+    background-color: var(--morado-claro);
     margin-right: 20px;
-    float: right;
+    width: auto;
   }
 
   .messages .message.right .text_wrapper::after,
   .messages .message.right .text_wrapper::before {
     left: 100%;
-    border-left-color:  #d8b2e7;
+    border-left-color:  var(--morado-claro);
+
   }
 
   .messages .message.right .text {

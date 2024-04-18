@@ -16,10 +16,11 @@
             [ngClass]="{'left': item.message_side === 'receiver', 'right' : item.message_side === 'sender'}">
             <div class="avatar">
                 <img class=" avatar"
-                    src="https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg"
+                    [src]="item.imguser"
                     alt="">
             </div>
             <div class="text_wrapper">
+                <div class="TextoShareHubFont fw-bold text">{{item.nombre}}</div>
                 <div class="text TextoShareHubFont">{{item.message}}</div>
             </div>
         </li>
