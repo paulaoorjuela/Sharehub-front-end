@@ -17,7 +17,7 @@ export class ChatService {
     }
 
     initConnectionSocket() {
-        const url = 'http://54.173.19.90:4002/chat-socket';
+        const url = 'http://100.24.44.234:4002/chat-socket';
         const socket = new SockJS(url);
         return (this.stompClient = Stomp.over(socket));
     }

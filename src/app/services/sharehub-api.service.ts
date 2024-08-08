@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 })
 export class SharehubApiService {
     private http = inject(HttpClient);
-    private urlApi: string = 'http://54.173.19.90:4000/api';
+    private urlApi: string = 'http://100.24.44.234:4000/api';
     private publicacionesGrupos: BehaviorSubject<any[]> = new BehaviorSubject<
         any[]
     >([]);
