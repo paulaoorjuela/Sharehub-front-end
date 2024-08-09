@@ -49,9 +49,9 @@ body {
 .esta{
     margin: 200px;
 }
-/* .oculto {
-    display: block;
-} */
+.oculto:hover {
+    cursor: pointer;
+}
 
 
 /* ---------------------------------------- */
