@@ -58,8 +58,9 @@ export class ChatComponent {
     }
 
     sendMessage() {
+        let mensaje = this.messageInput.value
         let ChatMessage = {
-            message: this.messageInput.value,
+            message: mensaje,
             user: this.userId,
             nombre: sessionStorage.getItem("nombre"),
             imguser: sessionStorage.getItem("imagen")
@@ -68,12 +69,7 @@ export class ChatComponent {
         console.log(this.messageInput.value);
         const input = document.getElementById('inputText') as HTMLInputElement;
         input.value = '';
-        ChatMessage = {
-            message: '',
-            user: this.userId,
-            nombre: sessionStorage.getItem("nombre"),
-            imguser: sessionStorage.getItem("imagen")
-        };
+        mensaje = ''
     }
 
     lisenerMesage() {
