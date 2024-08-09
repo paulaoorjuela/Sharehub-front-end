@@ -59,17 +59,18 @@ export class ChatComponent {
 
     sendMessage() {
         let mensaje = this.messageInput.value
-        let ChatMessage = {
-            message: mensaje,
-            user: this.userId,
-            nombre: sessionStorage.getItem("nombre"),
-            imguser: sessionStorage.getItem("imagen")
-        };
-        this.chatService.sendMessage('ShareHub', ChatMessage);
-        console.log(this.messageInput.value);
-        const input = document.getElementById('inputText') as HTMLInputElement;
-        input.value = '';
-        mensaje = ''
+        if (mensaje !== "") {
+            let ChatMessage = {
+                message: mensaje,
+                user: this.userId,
+                nombre: sessionStorage.getItem("nombre"),
+                imguser: sessionStorage.getItem("imagen")
+            };
+            this.chatService.sendMessage('ShareHub', ChatMessage);
+            console.log(this.messageInput.value);
+            const input = document.getElementById('inputText') as HTMLInputElement;
+            input.value = '';
+        }
     }
 
     lisenerMesage() {
