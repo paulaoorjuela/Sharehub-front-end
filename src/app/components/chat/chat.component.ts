@@ -13,7 +13,7 @@ import { SharehubApiService } from '../../services/sharehub-api.service';
     styleUrl: './chat.component.scss',
 })
 export class ChatComponent {
-    messageInput = new FormControl();
+    messageInput = new FormControl('');
     userId: string = '';
     messageList: any[] = [];
     private Services = inject(SharehubApiService);
