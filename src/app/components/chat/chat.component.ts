@@ -68,7 +68,7 @@ export class ChatComponent {
         console.log(this.messageInput.value);
         const input = document.getElementById('inputText') as HTMLInputElement;
         input.value = '';
-        ChatMessage.message.value = ''
+        ChatMessage.message = ''
     }
 
     lisenerMesage() {
